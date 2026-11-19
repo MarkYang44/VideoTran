@@ -1,0 +1,9 @@
+{
+  "name": "VideoTran",
+  "identifier": "local.videosubtitle.iina",
+  "version": "0.1.0",
+  "author": { "name": "VideoTran contributors" },
+  "description": "使用本机 VideoTran App 预读日语视频并按播放进度显示字幕。",
+  "entry": "main.js",
+  "permissions": ["video-overlay", "file-system", "show-osd"]
+}

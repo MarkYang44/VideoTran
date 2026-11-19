@@ -1,0 +1,4 @@
+.build/
+dist/
+models/
+.DS_Store
