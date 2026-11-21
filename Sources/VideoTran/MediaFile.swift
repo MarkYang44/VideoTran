@@ -25,13 +25,17 @@ struct MediaFile {
     private let subtitle: Int?
 
     static let blockSize: Double = 16
+    static let extensions = ["mp4", "mkv", "mov", "m4v", "webm"]
+
+    static func isSupported(_ url: URL) -> Bool {
+        url.isFileURL && extensions.contains(url.pathExtension.lowercased())
+    }
 
     static func open(_ url: URL, selectedAudio: Int? = nil) async throws -> Self {
         guard let ffmpeg = LocalTools.executable("ffmpeg"), let ffprobe = LocalTools.executable("ffprobe") else {
             throw ToolError("读取本地视频需要 FFmpeg 和 ffprobe。")
         }
-        guard url.isFileURL, ["mp4", "mkv", "mov", "m4v", "webm"].contains(url.pathExtension.lowercased()),
-              try url.resourceValues(forKeys: [.isRegularFileKey]).isRegularFile == true else {
+        guard isSupported(url), try url.resourceValues(forKeys: [.isRegularFileKey]).isRegularFile == true else {
             throw ToolError("请选择本地 MP4、MKV、MOV、M4V 或 WebM 文件。")
         }
         let data = try await LocalTools.run(ffprobe, [

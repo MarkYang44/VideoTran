@@ -24,11 +24,11 @@ VideoTran can caption the audio from a selected player, keep translated subtitle
 
 | Mode | How it works |
 | --- | --- |
-| Live captions | Captures audio from the selected player and displays a floating caption window on the screen under the pointer. |
+| Live captions | Captures audio from the selected player and displays a floating caption window on the screen under the pointer. The player list updates on its own and remembers the last player you used. |
 | IINA Sync | Uses IINA's playback position to display translated captions. It translates existing Japanese text subtitles first, or reads ahead in the audio when needed. |
 | SRT export | Generates Simplified Chinese subtitles with timestamps for use in another player. |
 
-Enable **显示日文原文** to display Japanese alongside the translation. You can minimize the control window while a task runs. Closing it stops the task.
+Enable **显示日文原文** to display Japanese alongside the translation. The change applies to the caption on screen right away and is kept for the next launch. You can minimize the control window while a task runs. Closing it stops the task.
 
 ## Installation
 
@@ -40,9 +40,11 @@ The release targets **macOS 15 or later** on Apple silicon. The app is ad hoc si
 
 ## Quick start
 
-1. **Live captions.** Play a video, select its player in VideoTran, and click **开始**. Grant macOS system audio recording permission when prompted.
-2. **IINA Sync.** Open a local video in IINA and choose **插件 → 同步翻译此窗口**. In VideoTran, click **IINA 同步**.
-3. **SRT export.** Click **导出 SRT…**, choose a video, and select where to save the subtitle file.
+1. **Live captions.** Play a video, select its player in VideoTran, and click **开始** or press Return. Grant macOS system audio recording permission when prompted.
+2. **IINA Sync.** Open a local video in IINA and choose **插件 → 同步翻译此窗口**. While the VideoTran control window is open, sync starts on its own. There is no need to click **IINA 同步**.
+3. **SRT export.** Click **导出 SRT…** or drop a video on the control window, then confirm where to save the subtitles. The video's folder is the default. When the export finishes, click **在 Finder 中显示** to locate the file.
+
+Press ⌘. to stop a running task.
 
 ## Compatibility and dependencies
 
